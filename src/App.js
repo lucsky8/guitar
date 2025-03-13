@@ -17,7 +17,7 @@ function App() {
         <p>
           Choose a key and scale type to visualize positions on the guitar
           fretboard. Red dots are root notes, blue dots are other notes of the
-          scale or arpeggio.
+          scale or arpeggio and test.
         </p>
       </div>
 
