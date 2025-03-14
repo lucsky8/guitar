@@ -1,0 +1,96 @@
+.position {
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .position-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .fretboard {
+    display: grid;
+    grid-template-columns: 25px repeat(4, 1fr);
+    gap: 2px;
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  .string-name {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .fret {
+    width: 35px;
+    height: 35px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+  }
+  
+  .note {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Additional fixes for fret headers */
+  .fret-header {
+    text-align: center;
+    font-size: 14px;
+    padding: 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Fix for empty header cell */
+  .fret-header-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Make sure all fret headers use flexbox with proper settings */
+  .fret-header, .fret-header[data-fret] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    padding: 5px 0;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .position {
+      padding: 10px; /* Reduce padding inside position boxes */
+      max-width: 100%; /* Ensure they don't overflow */
+    }
+    
+    .fret {
+      width: 30px; /* Slightly smaller frets on mobile */
+      height: 30px;
+    }
+    
+    .note {
+      width: 22px; /* Slightly smaller notes on mobile */
+      height: 22px;
+    }
+  }

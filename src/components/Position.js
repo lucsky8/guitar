@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/Position.css";
 
 // We'll assume these are passed as props or imported
 const stringNames = ["E", "B", "G", "D", "A", "E"];
@@ -35,20 +36,23 @@ const Position = ({
   return (
     <div className="position">
       <div className="position-title">Position {positionIndex + 1}</div>
+      <div className="fret-indicator">{minFret}th Fret Position</div>
       <div 
         className="fretboard"
         style={{
-          display: "grid",
           gridTemplateColumns: `25px repeat(${fretCount}, 1fr)`,
-          gap: "2px",
         }}
       >
         {/* Header row: empty cell + fret numbers */}
-        <div></div>
+        <div className="fret-header-empty"></div>
         {Array.from({ length: fretCount }, (_, i) => {
           const fretNumber = minFret + i;
           return (
-            <div key={fretNumber} className="fret-header">
+            <div 
+              key={fretNumber} 
+              className="fret-header"
+              data-fret={fretNumber}
+            >
               {fretNumber}
             </div>
           );

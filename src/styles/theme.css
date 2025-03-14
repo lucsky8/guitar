@@ -1,0 +1,111 @@
+/* Light theme (default) */
+:root {
+    --bg-color: #f5f5f5;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --text-secondary: #555555;
+    --border-color: #dee2e6;
+    --primary-color: #457b9d;
+    --secondary-color: #e63946;
+    --hover-color: rgba(0, 0, 0, 0.1);
+    --control-bg: #f8f9fa;
+    --note-normal: #aaaaaa;
+    --shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  /* Dark theme */
+  .dark {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --border-color: #333333;
+    --primary-color: #64b5f6;
+    --secondary-color: #e57373;
+    --hover-color: rgba(255, 255, 255, 0.1);
+    --control-bg: #2d2d2d;
+    --note-normal: #777777;
+    --shadow: 0 2px 5px rgba(0,0,0,0.3);
+  }
+  
+  .container {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  /* Applying theme variables to all components */
+  .info-box, .controls, .scale-info, .position, .legend {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+    box-shadow: var(--shadow);
+  }
+  
+  .info-box h1, .info-box h3 {
+    color: var(--text-color);
+  }
+  
+  .info-box h3, .scale-info h3, .fret-indicator {
+    color: var(--primary-color);
+  }
+  
+  .control-group label {
+    color: var(--text-color);
+  }
+  
+  select {
+    background-color: var(--control-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+  }
+  
+  select:hover, select:focus {
+    border-color: var(--primary-color);
+  }
+  
+  .note-bubble {
+    background-color: var(--primary-color);
+  }
+  
+  .note-bubble.root {
+    background-color: var(--secondary-color);
+  }
+  
+  .note.root, .legend-circle.root {
+    background-color: var(--secondary-color);
+  }
+  
+  .note.scale, .legend-circle.scale {
+    background-color: var(--primary-color);
+  }
+  
+  .note.normal, .legend-circle.normal {
+    background-color: var(--note-normal);
+  }
+  
+  .legend-item {
+    background-color: var(--control-bg);
+  }
+  
+  .fret {
+    border-color: var(--border-color);
+  }
+  
+  input:checked + .toggle-slider {
+    background-color: var(--primary-color);
+  }
+  
+  .fret-indicator, .footer-controls button {
+    background-color: var(--control-bg);
+    border-color: var(--border-color);
+    color: var(--primary-color);
+  }
+  
+  .scale-display-minimal span, .show-info-button {
+    color: var(--primary-color);
+  }
+  
+  .fret-header, .fret-header[data-fret] {
+    color: var(--text-secondary);
+  }

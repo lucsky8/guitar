@@ -1,0 +1,100 @@
+/* Scale info styling */
+.scale-info {
+    border-radius: 8px;
+    padding: 20px;
+    margin: 0 auto 30px;
+    max-width: 800px;
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .scale-info h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+  }
+  
+  .scale-notes {
+    margin-bottom: 20px;
+  }
+  
+  .scale-notes-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .note-bubbles {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .note-bubble {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  .scale-theory {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  /* Minimal scale display when info is hidden */
+  .scale-display-minimal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  
+  .scale-display-minimal span {
+    font-weight: 700;
+    text-transform: capitalize;
+  }
+  
+  .show-info-button {
+    background-color: transparent;
+    border: none;
+    font-size: 0.9rem;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .show-info-button:hover {
+    opacity: 0.85;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .scale-info {
+      padding: 15px;
+    }
+    
+    .note-bubbles {
+      gap: 10px;
+    }
+    
+    .note-bubble {
+      width: 35px;
+      height: 35px;
+      font-size: 14px;
+    }
+  }

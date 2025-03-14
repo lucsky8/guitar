@@ -1,19 +1,20 @@
 import React from "react";
+import "../styles/Legend.css";
 
 const Legend = () => {
   return (
     <div className="legend">
       <div className="legend-item">
-        <div className="legend-color-root root-color"></div>
-        <span>Root</span>
+        <div className="legend-circle root"></div>
+        <span>Root Note</span>
       </div>
       <div className="legend-item">
-        <div className="legend-color-scale scale-color"></div>
+        <div className="legend-circle scale"></div>
         <span>Scale Note</span>
       </div>
       <div className="legend-item">
-        <div className="legend-color normal-color"></div>
-        <span>Other Notes</span>
+        <div className="legend-circle normal"></div>
+        <span>Other</span>
       </div>
     </div>
   );
