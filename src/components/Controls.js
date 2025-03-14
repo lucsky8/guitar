@@ -72,9 +72,7 @@ const Controls = ({ keyValue, setKey, scaleType, setScaleType, isHighNeck, setIs
         </div>
       </div>
       
-      <div className="scale-display">
-        Currently viewing: <span>{keyValue} {getFormattedScaleName()}</span>
-      </div>
+      
     </>
   );
 };

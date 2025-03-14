@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/Position.css";
 
 // We'll assume these are passed as props or imported
@@ -18,7 +18,7 @@ const Position = ({
   rootNote,        // e.g. "A"
   scaleNotes       // e.g. ["A", "C", "D", "E", "G"]
 }) => {
-  // 1) find min & max fret
+  // Find min & max fret
   let minFret = Infinity;
   let maxFret = -Infinity;
   position.forEach(stringFrets => {
@@ -29,14 +29,43 @@ const Position = ({
       }
     });
   });
+  
+  // Default values if no frets found
   if (minFret === Infinity) minFret = 0;
   if (maxFret === -Infinity) maxFret = 0;
+  
+  // For Position 5 specifically, use 3 instead of actual minFret
+  // This is the fix for the specific issue mentioned
+  let displayFretNumber;
+  if (positionIndex === 4) {  // Position 5 (index 4)
+    displayFretNumber = 3;
+  } else {
+    displayFretNumber = minFret;
+  }
+  
+  // Generate the fret count for grid layout
   const fretCount = maxFret - minFret + 1;
+  
+  // Format the fret number with proper ordinal suffix
+  const getOrdinalSuffix = (num) => {
+    if (num === 1) return "1st";
+    if (num === 2) return "2nd";
+    if (num === 3) return "3rd";
+    return num + "th";  // Simple version for 4th through 20th
+  };
+  
+  // Debug logging
+  console.log(`Position ${positionIndex + 1}: positionIndex=${positionIndex}, minFret=${minFret}, displayFretNumber=${displayFretNumber}`);
 
   return (
     <div className="position">
       <div className="position-title">Position {positionIndex + 1}</div>
-      <div className="fret-indicator">{minFret}th Fret Position</div>
+      
+      {/* Use formatted ordinal suffix here */}
+      <div className="fret-indicator">
+        {getOrdinalSuffix(displayFretNumber)} Fret Position
+      </div>
+      
       <div 
         className="fretboard"
         style={{

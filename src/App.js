@@ -58,7 +58,7 @@ function App() {
       {showInfo && <ScaleInfo keyValue={keyValue} scaleType={scaleType} />}
       
       {!showInfo && (
-        <div className="scale-display-minimal">
+        <div className="scale-display">
           Currently viewing: <span>{keyValue} {scaleType.replace('-', ' ')}</span>
           <button 
             className="show-info-button"
