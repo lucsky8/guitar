@@ -39,6 +39,7 @@ export function getScale(rootNote, scaleType) {
             intervals = [0, 3, 5, 7, 10]; // fallback to minor pentatonic
     }
 
+   
     // 3) Map intervals to note names
     return intervals.map(interval => {
         const noteIndex = (rootIndex + interval) % 12;

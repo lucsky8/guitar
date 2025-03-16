@@ -6,6 +6,9 @@
 @import './styles/Legend.css';
 @import './styles/Position.css';
 @import './styles/ScaleInfo.css';
+@import './styles/SongScales.css';
+@import './styles/FeatureToggle.css';
+
 
 /* Global reset styles */
 * {

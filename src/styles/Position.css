@@ -76,6 +76,15 @@
     font-size: 14px;
     padding: 5px 0;
   }
+
+  /* Add this to your Position.css file */
+  .position:nth-child(1) .note.scale {
+    background-color: var(--primary-color) !important;
+  }
+
+  .position:nth-child(1) .note.root {
+    background-color: var(--secondary-color) !important;
+  }
   
   /* Responsive adjustments */
   @media (max-width: 768px) {

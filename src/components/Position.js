@@ -18,21 +18,35 @@ const Position = ({
   rootNote,        // e.g. "A"
   scaleNotes       // e.g. ["A", "C", "D", "E", "G"]
 }) => {
-  // Find min & max fret
+  // Find min & max fret - with special handling for open positions
   let minFret = Infinity;
   let maxFret = -Infinity;
+  let hasOpenPosition = false;
+  
   position.forEach(stringFrets => {
     stringFrets.forEach(fret => {
       if (fret !== null) {
-        if (fret < minFret) minFret = fret;
+        // Check for open position
+        if (fret === 0) {
+          hasOpenPosition = true;
+        } else {
+          // Only consider non-zero frets for minFret calculation
+          if (fret < minFret) minFret = fret;
+        }
+        
         if (fret > maxFret) maxFret = fret;
       }
     });
   });
   
-  // Default values if no frets found
+  // If we only have open positions, set minFret to 0
   if (minFret === Infinity) minFret = 0;
   if (maxFret === -Infinity) maxFret = 0;
+  
+  // For open positions, ensure we start at fret 0 in the display
+  if (hasOpenPosition) {
+    minFret = 0;
+  }
   
   // For Position 5 specifically, use 3 instead of actual minFret
   // This is the fix for the specific issue mentioned
@@ -48,14 +62,56 @@ const Position = ({
   
   // Format the fret number with proper ordinal suffix
   const getOrdinalSuffix = (num) => {
+    if (num === 0) return "0th"; // Special case for open position
     if (num === 1) return "1st";
     if (num === 2) return "2nd";
     if (num === 3) return "3rd";
     return num + "th";  // Simple version for 4th through 20th
   };
   
-  // Debug logging
-  console.log(`Position ${positionIndex + 1}: positionIndex=${positionIndex}, minFret=${minFret}, displayFretNumber=${displayFretNumber}`);
+  
+
+  // Helper function to determine note class
+  // Helper function to determine note class with extensive debugging
+const getNoteClass = (noteName) => {
+  // Sanity check and debugging
+  console.log(`Checking note: ${noteName}`);
+  
+  if (!noteName) {
+    console.log(`Note name is undefined or null`);
+    return "note normal";
+  }
+  
+  if (!scaleNotes || !Array.isArray(scaleNotes)) {
+    console.error("scaleNotes is not properly defined:", scaleNotes);
+    return "note normal";
+  }
+  
+  console.log(`Root note: ${rootNote}, Scale notes:`, scaleNotes);
+  
+  // Check if it's a root note first
+  if (noteName === rootNote) {
+    console.log(`${noteName} is a ROOT note`);
+    return "note root";
+  }
+  
+  // Then check if it's in the scale notes array
+  const normalizedScaleNotes = scaleNotes.map(n => n.toUpperCase());
+  const normalizedNoteName = noteName.toUpperCase();
+  
+  console.log(`Normalized note: ${normalizedNoteName}`);
+  console.log(`Normalized scale notes:`, normalizedScaleNotes);
+  console.log(`Is in scale? ${normalizedScaleNotes.includes(normalizedNoteName)}`);
+  
+  if (normalizedScaleNotes.includes(normalizedNoteName)) {
+    console.log(`${noteName} is a SCALE note, will return 'note scale'`);
+    return "note scale";
+  }
+  
+  // Default fallback
+  console.log(`${noteName} is not in scale, will return 'note normal'`);
+  return "note normal";
+};
 
   return (
     <div className="position">
@@ -103,14 +159,10 @@ const Position = ({
 
               // If in position, figure out the note name
               const noteName = getNoteName(stringName, currentFret);
-
-              // Determine if it's root or scale
-              let noteClass = "note normal"; // fallback
-              if (noteName === rootNote) {
-                noteClass = "note root"; // red
-              } else if (scaleNotes.includes(noteName)) {
-                noteClass = "note scale"; // blue
-              }
+              
+             
+              // Get the appropriate CSS class
+              const noteClass = getNoteClass(noteName);
 
               return (
                 <div key={i} className="fret">
