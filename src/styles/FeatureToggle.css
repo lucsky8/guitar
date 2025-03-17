@@ -1,45 +1,48 @@
-/* Feature toggle styles */
+/* Enhanced Feature toggle styles */
 .feature-toggle {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 25px;
-    border-radius: 8px;
-    padding: 5px;
-    background-color: var(--bg-color);
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  padding: 5px;
+  background-color: var(--bg-color);
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.feature-button {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  flex: 1;
+  text-align: center;
+}
+
+.feature-button:hover {
+  background-color: var(--hover-color);
+}
+
+.feature-button.active {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .feature-toggle {
+    max-width: 100%;
   }
   
   .feature-button {
-    padding: 10px 20px;
-    border: none;
-    background: none;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background-color 0.3s, color 0.3s;
-    flex: 1;
+    padding: 8px 15px;
+    font-size: 14px;
   }
-  
-  .feature-button:hover {
-    background-color: var(--hover-color);
-  }
-  
-  .feature-button.active {
-    background-color: var(--primary-color);
-    color: white;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .feature-toggle {
-      max-width: 100%;
-    }
-    
-    .feature-button {
-      padding: 8px 15px;
-      font-size: 14px;
-    }
-  }
+}

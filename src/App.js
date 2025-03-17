@@ -3,10 +3,8 @@ import Controls from "./components/Controls";
 import Fretboard from "./components/Fretboard";
 import Legend from "./components/Legend";
 import ScaleInfo from "./components/ScaleInfo";
-import SongScales from "./components/SongScales"; // Import our new component
-//import "./App.css";
+import SongScales from "./components/SongScales";
 import "./index.css"; // This imports all the CSS files
-
 
 function App() {
   const [keyValue, setKeyValue] = useState("A");
@@ -14,13 +12,16 @@ function App() {
   const [isHighNeck, setIsHighNeck] = useState(false);
   const [theme, setTheme] = useState("light");
   const [showInfo, setShowInfo] = useState(false);
-  const [showSongScales, setShowSongScales] = useState(false); // New state for feature toggle
+  const [showSongScales, setShowSongScales] = useState(false);
+  
+  // Only two main sections now: Scale Viewer and Song Library
+  const [activeSection, setActiveSection] = useState("scaleViewer"); // "scaleViewer" or "songLibrary"
 
   return (
     <div className={`container ${theme}`}>
       <header className="app-header">
         <div className="header-controls">
-          {!showSongScales && (
+          {activeSection === "scaleViewer" && (
             <button 
               className={`info-toggle ${showInfo ? 'active' : ''}`} 
               onClick={() => setShowInfo(!showInfo)}
@@ -40,25 +41,26 @@ function App() {
         </div>
       </header>
       
-      {/* Toggle between Scale Viewer and Song Scales */}
+      {/* Simplified feature toggle with just two options */}
       <div className="feature-toggle">
         <button 
-          className={`feature-button ${!showSongScales ? 'active' : ''}`}
-          onClick={() => setShowSongScales(false)}
+          className={`feature-button ${activeSection === "scaleViewer" ? 'active' : ''}`}
+          onClick={() => setActiveSection("scaleViewer")}
         >
           Scale Viewer
         </button>
         <button 
-          className={`feature-button ${showSongScales ? 'active' : ''}`}
-          onClick={() => setShowSongScales(true)}
+          className={`feature-button ${activeSection === "songLibrary" ? 'active' : ''}`}
+          onClick={() => {
+            setActiveSection("songLibrary");
+            setShowSongScales(true);
+          }}
         >
-          Song Scales
+          Song Library
         </button>
       </div>
 
-      {showSongScales ? (
-        <SongScales setShowSongScales={setShowSongScales} />
-      ) : (
+      {activeSection === "scaleViewer" ? (
         <>
           <div className="info-box">
             <h1>Guitar Scale Viewer</h1>
@@ -97,6 +99,13 @@ function App() {
 
           <Fretboard keyValue={keyValue} scaleType={scaleType} isHighNeck={isHighNeck} />
         </>
+      ) : (
+        // Render Song Library (previously SongScales)
+        <SongScales 
+          // No need for setShowSongScales anymore since it's handled by section toggle
+          // Just pass a function to return to Scale Viewer if needed
+          setActiveSection={setActiveSection}
+        />
       )}
       
       <footer>

@@ -1,0 +1,180 @@
+/* Song Library specific styles */
+.song-list-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .song-list-container h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+  }
+  
+  .how-to-play {
+    margin-top: 30px;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    padding: 20px;
+    border-left: 4px solid var(--primary-color);
+  }
+  
+  .how-to-play h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+  }
+  
+  .how-to-play p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+  }
+  
+  /* Tab navigation improvements */
+  .tab-navigation {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 25px;
+  }
+  
+  .tab-button {
+    padding: 12px 24px;
+    margin: 0 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .tab-button.active {
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+  
+  .tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 3px 3px 0 0;
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+  
+  .tab-button:hover:not(.active) {
+    background-color: var(--hover-color);
+    color: var(--primary-color);
+  }
+  
+  /* Scale selector in Blackbird page */
+  .scale-selector {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .scale-button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  
+  .scale-button.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .scale-button:hover:not(.active) {
+    background-color: var(--hover-color);
+    transform: translateY(-2px);
+  }
+  
+  /* Empty state for future song additions */
+  .empty-song-library {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    margin-top: 30px;
+  }
+  
+  .empty-song-library h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+  }
+  
+  .empty-song-library p {
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+  }
+  
+  /* Song card enhancements */
+  .song-card {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .song-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  
+  .song-card:hover::after {
+    transform: scaleX(1);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .tab-navigation {
+      flex-wrap: wrap;
+    }
+    
+    .tab-button {
+      padding: 10px 15px;
+      font-size: 14px;
+      flex-grow: 1;
+    }
+    
+    .scale-selector {
+      flex-direction: column;
+      width: 100%;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .scale-button {
+      width: 100%;
+      text-align: center;
+    }
+  }

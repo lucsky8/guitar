@@ -1,0 +1,183 @@
+/* Enhanced Chord Chart Styles */
+.chord-chart-container {
+  margin: 30px 0;
+  padding: 20px;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.chord-chart-container h4 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.chord-grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+  padding: 15px 0;
+}
+
+.chord-box {
+  width: 100px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.chord-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chord-name {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.chord-grid {
+  position: relative;
+  width: 90px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chord-nut {
+  height: 6px;
+  width: 100%;
+  background-color: var(--text-color);
+  border-radius: 2px;
+  margin-bottom: 2px;
+}
+
+.chord-nut.hidden {
+  display: none;
+}
+
+.fret-marker {
+  position: absolute;
+  left: -25px;
+  top: 15px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: bold;
+}
+
+.strings {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.string-line {
+  width: 2px;
+  background-color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.string-marker {
+  position: absolute;
+  top: -25px;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.fret-position {
+  height: 22px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3px 0;
+  position: relative;
+}
+
+.finger-position {
+  position: relative;
+}
+
+.finger {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  /* Position properly to avoid overlapping strings */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+/* Chord Progression Display */
+.chord-progression-display {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.chord-progression-display h5 {
+  margin-bottom: 15px;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.chord-sequence {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.chord-sequence-box {
+  padding: 8px 15px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-weight: bold;
+  min-width: 45px;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .chord-grid-container {
+    gap: 15px;
+  }
+  
+  .chord-box {
+    width: 90px;
+  }
+  
+  .chord-grid {
+    width: 80px;
+    height: 110px;
+  }
+  
+  .finger {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+}

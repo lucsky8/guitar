@@ -1,300 +1,424 @@
-/* SongScales Component Styles */
+/* SongScales Component Styles - Enhanced for better navigation */
 .song-scales-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  transition: color 0.2s;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+  color: var(--secondary-color);
+}
+
+/* Song List View */
+.song-library-intro {
+  text-align: center;
+  margin-bottom: 25px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+.song-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.song-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.song-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.song-card h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: var(--primary-color);
+}
+
+.song-artist {
+  margin: 0 0 5px 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.song-details {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.song-card-footer {
+  margin-top: auto;
+  padding-top: 15px;
+  display: flex;
+  gap: 8px;
+}
+
+.song-tag {
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 12px;
+  background-color: var(--bg-color);
+  color: var(--text-secondary);
+}
+
+/* Song Detail View */
+.song-detail-container {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: var(--shadow);
+}
+
+.song-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.song-header h2 {
+  margin: 0;
+  color: var(--primary-color);
+}
+
+.tab-navigation {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+  transition: color 0.2s;
+  color: var(--text-color);
+}
+
+.tab-button.active {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.tab-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+.tab-button:hover:not(.active) {
+  background-color: var(--hover-color);
+}
+
+.tab-content {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.key-details {
+  display: flex;
+  gap: 20px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.detail-value {
+  padding: 4px 10px;
+  background-color: var(--bg-color);
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.overview-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.preview-section {
+  background-color: var(--bg-color);
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.preview-section h4 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.chord-sequence {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.chord-sequence-box {
+  padding: 8px 12px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.scale-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.scale-preview-item {
+  padding: 8px 12px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.scale-name {
+  font-weight: 500;
+}
+
+.view-more-button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.view-more-button:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Scales Tab */
+.scale-options {
+  margin-top: 10px;
+}
+
+.scale-intro {
+  margin-bottom: 20px;
+}
+
+.scale-grid {
+  display: grid;
+  gap: 15px;
+}
+
+.scale-option {
+  background-color: var(--bg-color);
+  border-radius: 8px;
+  padding: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.scale-option:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.scale-option-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.scale-option-header h4 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.view-scale-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.view-scale-button:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Scale Visualization */
+.scale-visualization-section {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: var(--shadow);
+}
+
+.scale-visualization-section h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+/* Toggle sections */
+.toggle-section {
+  margin-top: 15px;
+}
+
+.toggle-button {
+  text-align: center;
+  padding: 8px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--control-bg);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: var(--primary-color);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.toggle-button:hover {
+  background-color: var(--hover-color);
+}
+
+.toggle-button.full-width {
+  width: 100%;
+}
+
+.theory-explanation {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-left: 3px solid var(--primary-color);
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 0 4px 4px 0;
+}
+
+.chord-chart-toggle {
+  margin-bottom: 25px;
+}
+
+.theory-tips {
+  background-color: var(--bg-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 25px 0;
+  border-left: 4px solid var(--primary-color);
+}
+
+.practice-content {
+  margin-top: 15px;
+}
+
+.practice-suggestions {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  padding: 15px;
+  margin-top: 15px;
+}
+
+.practice-suggestions h5 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.practice-suggestions ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.practice-suggestions li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* Animation for tab switching */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .song-scales-container {
+    padding: 15px;
   }
   
-  .back-button {
-    background: none;
-    border: none;
-    color: var(--primary-color);
-    font-size: 16px;
-    cursor: pointer;
-    padding: 5px 0;
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+  .song-detail-container,
+  .scale-visualization-section {
+    padding: 15px;
   }
   
-  .back-button:hover {
-    text-decoration: underline;
-  }
-  
-  .song-info-section {
-    background: var(--card-bg);
-    border-radius: 8px;
-    padding: 25px;
-    box-shadow: var(--shadow);
-  }
-  
-  .song-header {
-    text-align: center;
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid var(--border-color);
-  }
-  
-  .song-header h3 {
-    margin: 0;
-    font-size: 24px;
-    color: var(--primary-color);
-  }
-  
-  .song-artist {
-    margin: 5px 0;
-    font-size: 18px;
-  }
-  
-  .song-details {
+  .tab-button {
+    padding: 8px 12px;
     font-size: 14px;
-    color: var(--text-secondary);
   }
   
-  .song-description {
-    margin-bottom: 25px;
-    line-height: 1.5;
-  }
-  
-  .chord-progression {
-    background-color: var(--bg-color);
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 15px;
-  }
-  
-  .chord-progression h4 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    color: var(--primary-color);
-  }
-  
-  .recommended-scales h4 {
-    margin-bottom: 15px;
-    color: var(--primary-color);
-  }
-  
-  .scale-options {
-    display: grid;
-    gap: 15px;
-  }
-  
-  .scale-option {
-    background-color: var(--bg-color);
-    border-radius: 8px;
-    padding: 15px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .scale-option:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow);
+  .overview-preview {
+    grid-template-columns: 1fr;
   }
   
   .scale-option-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+    flex-direction: column;
+    align-items: flex-start;
   }
   
-  .scale-option-header h5 {
-    margin: 0;
-    font-size: 18px;
+  .view-scale-button {
+    width: 100%;
   }
-  
-  .scale-option-header button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .scale-option p {
-    margin: 0 0 10px 0;
-    font-size: 14px;
-    color: var(--text-secondary);
-  }
-  
-  .theory-explanation {
-    background-color: rgba(0, 0, 0, 0.05);
-    border-left: 3px solid var(--primary-color);
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 0 4px 4px 0;
-  }
-  
-  .theory-explanation h6 {
-    margin: 0 0 5px 0;
-    font-size: 14px;
-    color: var(--primary-color);
-  }
-  
-  .theory-explanation p {
-    margin: 0;
-    font-size: 13px;
-    line-height: 1.5;
-  }
-  
-  .progression-analysis {
-    margin-top: 15px;
-    background-color: rgba(0, 0, 0, 0.05);
-    border-radius: 4px;
-    padding: 10px;
-  }
-  
-  .progression-analysis h5 {
-    margin: 0 0 8px 0;
-    font-size: 15px;
-    color: var(--primary-color);
-  }
-  
-  .progression-analysis p {
-    margin: 0;
-    font-size: 13px;
-    line-height: 1.5;
-  }
-  
-  .scale-visualization-section {
-    background: var(--card-bg);
-    border-radius: 8px;
-    padding: 25px;
-    box-shadow: var(--shadow);
-  }
-  
-  .back-to-song-info {
-    background: none;
-    border: none;
-    color: var(--primary-color);
-    font-size: 16px;
-    cursor: pointer;
-    padding: 5px 0;
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .back-to-song-info:hover {
-    text-decoration: underline;
-  }
-  
-  .scale-visualization-section h3 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: var(--primary-color);
-  }
-  
-  .theory-tips {
-    background-color: var(--bg-color);
-    border-radius: 8px;
-    padding: 20px;
-    margin: 25px 0;
-    border-left: 4px solid var(--primary-color);
-  }
-  
-  .theory-tips h4 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    color: var(--primary-color);
-  }
-  
-  .theory-tips p {
-    line-height: 1.6;
-    margin-bottom: 15px;
-  }
-  
-  .practice-suggestions {
-    background-color: rgba(0, 0, 0, 0.05);
-    border-radius: 6px;
-    padding: 15px;
-  }
-  
-  .practice-suggestions h5 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    color: var(--primary-color);
-  }
-  
-  .practice-suggestions ul {
-    margin: 0;
-    padding-left: 20px;
-  }
-  
-  .practice-suggestions li {
-    margin-bottom: 8px;
-    line-height: 1.5;
-  }
-  
-  /* Add back the h3 style */
-  .scale-visualization-section h3 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: var(--primary-color);
-  }
-
-  /* Toggle section container */
-.toggle-section {
-    margin-top: 10px;
-  }
-  
-  /* Basic toggle button */
-  .toggle-button {
-    text-align: center;
-    padding: 6px 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    background-color: var(--control-bg);
-    cursor: pointer;
-    transition: background-color 0.2s;
-    color: var(--primary-color);
-    font-weight: 500;
-    font-size: 14px;
-  }
-  
-  .toggle-button:hover {
-    background-color: var(--hover-color);
-  }
-  
-  /* Chord-specific toggle */
-  .chord-toggle {
-    display: inline-block;
-    width: auto;
-    margin: 10px 0;
-  }
-  
-  /* Progression analysis box that appears when toggle is expanded */
-  .progression-analysis {
-    margin-top: 10px;
-    background-color: rgba(0, 0, 0, 0.03);
-    border-radius: 4px;
-    padding: 15px;
-    border: 1px solid var(--border-color);
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .song-scales-container {
-      padding: 15px;
-    }
-    
-    .song-info-section, .scale-visualization-section {
-      padding: 15px;
-    }
-    
-    .song-header h3 {
-      font-size: 20px;
-    }
-    
-    .scale-option-header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    
-    .scale-option-header button {
-      width: 100%;
-    }
-  }
+}
