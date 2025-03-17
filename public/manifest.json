@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Guitar Scales",
+  "name": "Guitar Scale Viewer",
   "icons": [
     {
       "src": "favicon.ico",
